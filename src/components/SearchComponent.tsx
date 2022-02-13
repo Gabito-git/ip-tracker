@@ -1,4 +1,5 @@
 
+const arrowIcon = require( '../assets/icon-arrow.svg');
 
 const SearchComponent = () => {
   return (
@@ -10,7 +11,8 @@ const SearchComponent = () => {
                 className="search__input"
             />
             <div className="search__icon-field">
-                <img src='assets/icon-arrow.svg' alt="arrow"/>  
+                {/* <img src={arrowIcon } alt="arrow"/>   */}
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>
             </div>
         </div>
     </div>
