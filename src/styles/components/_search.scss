@@ -1,0 +1,43 @@
+.search{
+    flex-basis: 35%;
+
+    background-image: url('../../../public/assets/pattern-bg.png');
+    color: white;
+    padding: 2rem;
+
+    &__title{
+        font-size: 2.1rem;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    &__input-field{
+        align-items: center;
+        display: flex;
+
+        border-radius: 1.5rem;
+        margin-top: 2rem;
+        overflow: hidden;
+    }
+
+    &__input{
+        flex: 1;
+        padding: 1.3rem 1.6rem;
+    }
+
+    &__icon-field{
+        background-color: black;
+        cursor: pointer;
+        align-self: stretch;
+        flex-basis: 4.5rem;
+        transition: all .3s;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+            background-color: $very-dark-gray;
+        }
+    }
+}
