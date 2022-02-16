@@ -2,4 +2,8 @@
     flex: 1;
     margin-top: -10rem;
     z-index: 1;
+
+    @media all and (min-width: 767px){
+        margin-top: -6rem;
+    }
 }
