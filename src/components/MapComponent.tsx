@@ -1,4 +1,4 @@
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
 
 import L, { Icon, divIcon } from "leaflet";
 
@@ -29,11 +29,12 @@ const MapComponent = () => {
 
   return (
     <div className='map'>
-      <MapContainer center={[53.505, -0.09]} zoom={12}>
+      <MapContainer center={[53.505, -0.09]} zoom={12} zoomControl={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <ZoomControl position='bottomleft'/>
         <Marker position={[53.505, -0.09]} icon={ icon }>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
