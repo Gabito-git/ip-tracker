@@ -44,10 +44,15 @@
     &__input{
         flex: 1;
         padding: 1.3rem 1.6rem;
+
+        &:focus{
+            outline: none;
+        }
     }
 
     &__icon-field{
         background-color: black;
+        border: none;
         cursor: pointer;
         align-self: stretch;
         flex-basis: 4.5rem;

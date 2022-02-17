@@ -1,15 +1,10 @@
-import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMapEvents, ZoomControl } from 'react-leaflet'
 
-import L, { Icon, divIcon } from "leaflet";
+import { divIcon, Map } from "leaflet";
 
 import 'leaflet/dist/leaflet.css';
-
-/*
-  Las siquieres lineas antes de la declaración del componente, 
-  son usadas para lograr que el icono del marcador aparezca.
-  Se emplea require porque al usar import, typescript se queja 
-  indicando que no encuentra el modulo
-*/
+import { useEffect, useContext, useState } from 'react';
+import { AppContext } from '../App';
 
 const icon = divIcon({
   html: `
@@ -26,16 +21,26 @@ const icon = divIcon({
 
 const MapComponent = () => {
 
+  const { ipData } = useContext(AppContext);
+  const [map, setMap] = useState<Map>()
+
+  useEffect(() => {
+    map && ipData && map.setView([ipData.location.lat, ipData.location.lng], 13)
+  }, [ipData, map])
+  
+  if(!ipData) return <div>Loading</div>
+  
+  const { location:{ lat, lng } } = ipData
 
   return (
     <div className='map'>
-      <MapContainer center={[53.505, -0.09]} zoom={12} zoomControl={false}>
+      <MapContainer center={[lat, lng]} zoom={13} zoomControl={false} whenCreated={setMap}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ZoomControl position='bottomleft'/>
-        <Marker position={[53.505, -0.09]} icon={ icon }>
+        <Marker position={[lat, lng]} icon={ icon }>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>

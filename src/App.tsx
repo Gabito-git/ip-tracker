@@ -31,14 +31,13 @@ function App() {
       const { ip } = await getMyIp()
       const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_EiV5cPaMS9i77lsZlAGH7fz8eTTMX&ipAddress=${ ip }`);
       const data = await response.json()
+      console.log(`https://geo.ipify.org/api/v2/country,city?apiKey=at_EiV5cPaMS9i77lsZlAGH7fz8eTTMX&ipAddress=${ ip }`);
       setIpData( data )
     }
 
     getIpData()
 
   }, [])
-
-  console.log(ipData);
   
   return (
     <Provider value={{ ipData, setIpData }}>
